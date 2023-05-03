@@ -108,6 +108,13 @@ const getMentorsFullNames = (mentorsArray) => {
   return mentorsFullnames.sort()
 }
 
+const getEachMentorsFullNames = (mentorsArray) => {
+  let mentorsFullnames = []
+  mentorsArray.forEach((item) => mentorsFullnames.push(`${item[0]} ${item[1]}`))
+  return mentorsFullnames.sort()
+}
+
+console.log("Solucion con For Each: ", getEachMentorsFullNames(mentors))
 console.log(getMentorsFullNames(mentors))
 
 /**
@@ -126,13 +133,27 @@ const getKodersAndGrades = (kodersArray) => {
   for (let i = 0; i < koders.length; i++) {
       let koderName = koders[i].name
       let koderScores = koders[i].scores.html + koders[i].scores.css + koders[i].scores.js + koders[i].scores.bootstrap;
-      let koderAverage = koderScores / 4
+      let koderAverage = koderScores / Object.keys(koders[i].scores).length
       kodersAndGrades.push([koderName, koderAverage])
   }
   return kodersAndGrades
 }
 
+const getEachKodersAndGrades = (kodersArray) => {
+  let kodersAndGrades = []
+  const koderAsignment = (item) => {
+    let koderName = item.name
+    let koderScores = item.scores.html + item.scores.css + item.scores.js + item.scores.bootstrap;
+    let koderAverage = koderScores / Object.keys(item.scores).length
+    kodersAndGrades.push([koderName, koderAverage])
+  }
 
+  kodersArray.forEach(koderAsignment)
+
+  return kodersAndGrades
+}
+
+console.log("Solucion con For Each: \n", getEachKodersAndGrades(koders))
 console.log(getKodersAndGrades(koders))
 
 
@@ -156,6 +177,13 @@ const  getGraduatedKoders = (kodersArray) => {
   return ungraduatedKoders
 }
 
+const getEachGraduatedKoders = (kodersArray) => {
+  let ungraduatedKoders = []
+  kodersArray.forEach( (item) => (!item.isGraduated)? ungraduatedKoders.push(item.name) : "do nothing")
+  return ungraduatedKoders
+}
+
+console.log(" Solucion con For Each: ",getEachGraduatedKoders(koders))
 console.log(getGraduatedKoders(koders));
 
 
@@ -201,7 +229,7 @@ const highestAndLowestAvgKoder = (kodersArray) => {
   for (let i = 0; i < koders.length; i++) {
     let koderName = koders[i].name
     let koderScores = koders[i].scores.html + koders[i].scores.css + koders[i].scores.js + koders[i].scores.bootstrap;
-    let koderAverage = koderScores / 4
+    let koderAverage = koderScores / Object.keys(koders[i].scores).length
     kodersAverages.push({koderName, koderAverage})
   }
   kodersAverages.sort((a, b) => a.koderAverage - b.koderAverage)
@@ -209,3 +237,13 @@ const highestAndLowestAvgKoder = (kodersArray) => {
 }
 
 console.log(highestAndLowestAvgKoder(koders));
+
+/* Destructuracion y reestructuracion
+
+let {name, scores} = koders //destructuracion de un objecto
+let {html, css, js, bootstrap} = scores
+let average = (html + css + js + bootstrap) / 4
+let koderObject = {average, name} // reestructuracion de un objeto
+console.log(koderObject)
+
+*/
