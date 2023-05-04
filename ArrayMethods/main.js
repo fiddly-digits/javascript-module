@@ -162,7 +162,7 @@ console.log(getKodersAndGrades(koders))
  * * Recibe un arreglo de koders como parametro.
  * * crea un arreglo donde almacenaremos a los koders que no se han graduado
  * * Este ejecuta un for desde 0, con el limite del tamaño del array, con un aumento de 1
- * * Comparamos si la propiedad del koder "isGraduated" es verdadera o falsa y lo negamos con el operador ! para evitar usar el else
+ * * Comparamos si la propiedad del koder "isGraduated" es verdadera o falsa y lo negamos con el operador ! para evitar usar el else y una comparativa booleana
  * * De esta manera hacemos push a todos los nombres de los koders que no esten graduados al arreglo ungraduatedKoders
  * * Y por ultimo egresamos el arreglo
  */
@@ -179,7 +179,7 @@ const  getGraduatedKoders = (kodersArray) => {
 
 const getEachGraduatedKoders = (kodersArray) => {
   let ungraduatedKoders = []
-  kodersArray.forEach( (item) => (!item.isGraduated)? ungraduatedKoders.push(item.name) : "do nothing")
+  kodersArray.forEach( (item) => { if (!item.isGraduated) { ungraduatedKoders.push(item.name) } } )
   return ungraduatedKoders
 }
 
@@ -245,5 +245,7 @@ let {html, css, js, bootstrap} = scores
 let average = (html + css + js + bootstrap) / 4
 let koderObject = {average, name} // reestructuracion de un objeto
 console.log(koderObject)
+let numbers = [7, 8, 12, 25]
+let [a, b, c, d] = numbers // se puede usar cualquier nombre
 
 */
