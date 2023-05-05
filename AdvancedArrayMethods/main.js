@@ -113,4 +113,49 @@ const getCarDiscountPrice = (carsArray) => {
     return [name, finalPrice]
 }
 
-console.log(cars.map(getCarDiscountPrice))
+let carsFinalPrice = cars.map(getCarDiscountPrice)
+console.log(carsFinalPrice)
+
+// .filter()
+// * El metodo filter itera en el array, aplica una condicion a cada elemento y devuelve un nuevo array con aquellos elementos que cumplan con la condicion proporcionada. Si ningun elemento cumple con la condicion, devuelve un array vacio.
+
+let numbersFilter = [8, 4, 6, 2, 3, 4]
+
+const getEvens = (numbersArray) =>  {
+    let result = numbersArray.filter( (item) => item % 2 === 0 )
+    return result
+}
+
+let evensArray  = getEvens(numbersFilter)
+console.log(evensArray);
+
+// * .reduce()
+// * Itera en los elementos de un array y a cada elemento le aplica lo que llamamos una "funcion reductora" esta funcion procesa los elementos y los agrega a algo que llamaremos acumulador. El acumulador sera el resultado final de mi reduccion y puede ser de cualquier tipo de dato y cualquier valor.
+// ! reduce callback (acomulador, current, index, array)
+// ! Acumulador el lugar donde almacenamos el resultado | Current el elemento en cada iteracion (como item) | index el indice de cada elemento | Array el array original
+
+let numbersRed = [25, 12, 85, 78, 10]
+
+const addNumbers = (numbersArray) => {
+    let result = numbersArray.reduce( (accum, current) => {
+        return accum + current
+    }, 0)
+    return result
+}
+
+let result = addNumbers(numbersRed)
+console.log(result)
+
+//! ... operador de propagacion -> funciona con arrays y objetos
+
+let namesRed = ["Roberto Cruz", "Astrid Merino", "Jose Cruz"]
+
+const getInitials = (namesArray) => {
+    let result = namesArray.reduce((accum, current) => {
+        let initials = current.split(" "). map((word) => word.charAt(0).toUpperCase()).join(". ") + "."
+        return [...accum, initials]
+    }, []) 
+    return result
+}
+
+console.log(getInitials(namesRed))
