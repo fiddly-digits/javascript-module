@@ -145,7 +145,8 @@ const getEachKodersAndGrades = (kodersArray) => {
     let koderName = item.name
     let koderScores = item.scores.html + item.scores.css + item.scores.js + item.scores.bootstrap;
     let koderAverage = koderScores / Object.keys(item.scores).length
-    kodersAndGrades.push([koderName, koderAverage])
+    //kodersAndGrades.push([koderName, koderAverage])
+    kodersAndGrades = [ ...kodersAndGrades, [koderName, koderAverage] ]
   }
 
   kodersArray.forEach(koderAsignment)

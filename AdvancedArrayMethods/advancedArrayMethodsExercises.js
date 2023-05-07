@@ -376,5 +376,13 @@ console.log(biggestBuyPossible)
 //   return [...accum, itemName]
 // }, [])
 
+let productsByCategoryReduce = (productList) => {
+  let categoriesList = productList.reduce( (accum, product) => {
+    let category = product.category
+    return !accum.includes(category) ? [...accum, category] : [...accum]
+  }, [])
+  return categoriesList
+}
 
+console.log(productsByCategoryReduce(json))
 

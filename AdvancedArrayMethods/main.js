@@ -148,7 +148,7 @@ console.log(result)
 
 //! ... operador de propagacion -> funciona con arrays y objetos
 
-let namesRed = ["Roberto Cruz", "Astrid Merino", "Jose Cruz"]
+let namesRed = ["Roberto Cruz", "Damian Tapia", "Israel Morales", "Mara Villela"]
 
 const getInitials = (namesArray) => {
     let result = namesArray.reduce((accum, current) => {
@@ -159,3 +159,24 @@ const getInitials = (namesArray) => {
 }
 
 console.log(getInitials(namesRed))
+
+
+
+let songs = [
+    {
+        name: "Paranoid Android",
+        singer: "Radiohead" 
+    },
+    {
+        name: "Let Down",
+        singer: "Radiohead" 
+    },
+    {
+        name: "Carousels",
+        singer: "Beirut" 
+    }
+]
+
+let singers = songs.reduce((accum, current) =>  !accum.includes(current.singer) ? [...accum, current.singer] : [...accum] , [])
+
+console.log(singers);
